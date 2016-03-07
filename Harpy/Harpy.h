@@ -53,6 +53,7 @@ FOUNDATION_EXPORT NSString * const HarpyLanguageTurkish;
 - (void)harpyUserDidSkipVersion;        // User did click on button that skips version update
 - (void)harpyUserDidCancel;             // User did click on button that cancels update dialog
 - (void)harpyDidDetectNewVersionWithoutAlert:(NSString *)message; // Harpy performed version check and did not display alert
+- (void)harpyDidNotShowDialogBecauseCurrentVersionIsTheLatest; // Harpy performed the version check and decide to not show the alert because it's the latest version
 @end
 
 typedef NS_ENUM(NSUInteger, HarpyAlertType)

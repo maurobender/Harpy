@@ -210,7 +210,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
         [self localizeAlertStringsForCurrentAppStoreVersion:currentAppStoreVersion];
         [self alertTypeForVersion:currentAppStoreVersion];
         [self showAlertIfCurrentAppStoreVersionNotSkipped:currentAppStoreVersion];
-    }
+    } else if([self.delegate respondsToSelector:@selector(harpyDidNotShowDialogBecauseCurrentVersionIsTheLatest)]) {
+	 	  [self.delegate harpyDidNotShowDialogBecauseCurrentVersionIsTheLatest];
+	 }
 }
 
 - (void)showAlertIfCurrentAppStoreVersionNotSkipped:(NSString *)currentAppStoreVersion
