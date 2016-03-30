@@ -114,6 +114,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
     if ([self numberOfDaysElapsedBetweenLastVersionCheckDate] > 1) {
         [self checkVersion];
     }
+    if (![self lastVersionCheckPerformedOnDate] || [self numberOfDaysElapsedBetweenLastVersionCheckDate] == 1) {
+        [self.delegate harpyDidNotShowDialogBecauseCurrentVersionIsTheLatest];
+    }
 }
 
 - (void)checkVersionWeekly
@@ -188,6 +191,9 @@ NSString * const HarpyLanguageTurkish               = @"tr";
                                                             [self checkIfAppStoreVersionIsNewestVersion:_currentAppStoreVersion];
                                                         }
                                                     });
+                                                } else {
+                                                    if([self.delegate respondsToSelector:@selector(harpyDidNotShowDialogBecauseThreWasAnInternetError)])
+                                                        [self.delegate harpyDidNotShowDialogBecauseThreWasAnInternetError];
                                                 }
                                             }];
     [task resume];
